@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>{% block title %}10K Challenge{% endblock %}</title>
+</head>
+
+<body>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/company_search/">Company Search</a></li>
+            <li><a href="/company_search/detail">Company Results</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}
+        <table style="width:100%">
+            <tr>
+                <th></th>
+                <th>{{ obj.first.period_1_name }}</th>
+                <th>{{ obj.first.period_2_name }}</th>
+                <th>{{ obj.first.period_3_name }}</th>
+            </tr>
+            {% for o in obj %}
+            <tr>
+                <td>{{ o.field }}</td>
+                <td>{{ o.period_1 }}</td>
+                <td>{{ o.period_2 }}</td>
+                <td>{{ o.period_3 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endblock %}
+    </div>
+</body>
+
+</html>

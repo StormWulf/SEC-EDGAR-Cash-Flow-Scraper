@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>{% block title %}10K Challenge{% endblock %}</title>
+</head>
+
+<body>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/company_search/">Company Search</a></li>
+            <li><a href="/company_search/detail">Company Results</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}
+        {% for o in obj %}
+        <form method="POST" action="/company_search/detail/{{ticker}}/{{o}}">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-info" name="{{o}}" value="{{o}}">
+        </form>
+        {% endfor %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>
